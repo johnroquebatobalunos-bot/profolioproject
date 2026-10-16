@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit '.$portfolio->name.' · Folioform')
+@section('title', 'Edit '.$portfolio->name.' · PortfolioForm')
 
 @section('content')
 <div class="page-shell form-page">

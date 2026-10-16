@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f3f5ef">
-    <title>@yield('title', 'Folioform')</title>
+    <title>@yield('title', 'PortfolioForm')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
@@ -12,8 +12,8 @@
 </head>
 <body class="app-body">
     <header class="site-nav">
-        <a class="brand" href="{{ route('home') }}" aria-label="Folioform home">
-            <span class="brand-mark">f.</span><span>folioform</span>
+        <a class="brand" href="{{ route('home') }}" aria-label="PortfolioForm home">
+            <span class="brand-mark">PF</span><span>PortfolioForm</span>
         </a>
         <nav class="nav-links" aria-label="Main navigation">
             <a href="{{ route('home') }}" @if(request()->routeIs('home')) aria-current="page" @endif>Workspace</a>
@@ -29,7 +29,7 @@
     </main>
 
     <footer class="site-footer">
-        <a class="brand brand-small" href="{{ route('home') }}"><span class="brand-mark">f.</span><span>folioform</span></a>
+        <a class="brand brand-small" href="{{ route('home') }}"><span class="brand-mark">PF</span><span>PortfolioForm</span></a>
         <span>Make room for good work.</span>
         <span class="footer-templates">SIMPLE <i></i> MODERN <i></i> CREATIVE</span>
     </footer>

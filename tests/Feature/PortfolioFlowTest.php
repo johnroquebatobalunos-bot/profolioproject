@@ -10,6 +10,17 @@ class PortfolioFlowTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_portfolio_creation_shows_all_sections_in_one_form(): void
+    {
+        $this->get(route('portfolios.create'))
+            ->assertOk()
+            ->assertSee('Start with you')
+            ->assertSee("What you've learned", false)
+            ->assertSee('Work worth sharing')
+            ->assertSee('Create portfolio')
+            ->assertDontSee('Step 1 of 3');
+    }
+
     public function test_portfolio_can_be_created_edited_previewed_and_deleted(): void
     {
         $createResponse = $this->post(route('portfolios.store'), [

@@ -1,18 +1,8 @@
-<form class="portfolio-form" action="{{ $action }}" method="post" enctype="multipart/form-data" data-wizard>
+<form class="portfolio-form" action="{{ $action }}" method="post" enctype="multipart/form-data">
     @csrf
     @if ($method === 'put') @method('PUT') @endif
 
-    <div class="wizard-progress" data-wizard-progress>
-        <div class="wizard-progress-heading"><span data-wizard-status>Step 1 of 3 · Personal details</span><span data-wizard-percent>33%</span></div>
-        <div class="wizard-progress-track"><span data-wizard-bar></span></div>
-        <nav class="wizard-step-list" aria-label="Portfolio creation steps">
-            <button type="button" data-wizard-go="0" aria-current="step"><span>01</span> About you</button>
-            <button type="button" data-wizard-go="1"><span>02</span> Background</button>
-            <button type="button" data-wizard-go="2"><span>03</span> Your work</button>
-        </nav>
-    </div>
-
-    <section class="form-section" data-wizard-panel data-wizard-name="Personal details" aria-labelledby="personal-details-title">
+    <section class="form-section" aria-labelledby="personal-details-title">
         <div class="form-section-index">01</div>
         <div class="form-section-content">
             <div class="form-section-heading"><h2 id="personal-details-title" tabindex="-1">Start with you</h2><p>The details people use to find and remember you.</p></div>
@@ -47,7 +37,7 @@
         </div>
     </section>
 
-    <section class="form-section" data-wizard-panel data-wizard-name="Your background" aria-labelledby="education-title">
+    <section class="form-section" aria-labelledby="education-title">
         <div class="form-section-index">02</div>
         <div class="form-section-content">
             <div class="form-section-heading"><h2 id="education-title" tabindex="-1">What you've learned</h2><p>Education and the skills you bring to the room.</p></div>
@@ -69,7 +59,7 @@
         </div>
     </section>
 
-    <section class="form-section" data-wizard-panel data-wizard-name="Your work" aria-labelledby="work-title">
+    <section class="form-section" aria-labelledby="work-title">
         <div class="form-section-index">03</div>
         <div class="form-section-content">
             <div class="form-section-heading"><h2 id="work-title" tabindex="-1">Work worth sharing</h2><p>Projects, experience, and the links that take people further.</p></div>
@@ -104,10 +94,6 @@
 
     <div class="form-submit-row">
         <a class="text-link" href="{{ $cancelUrl }}">Cancel</a>
-        <div class="wizard-action-group">
-            <button class="button button-outline" type="button" data-wizard-back hidden>Back</button>
-            <button class="button button-dark" type="button" data-wizard-next>Continue <span aria-hidden="true">→</span></button>
-            <button class="button button-dark" type="submit" data-wizard-submit hidden>{{ $submitLabel }} <span aria-hidden="true">↗</span></button>
-        </div>
+        <button class="button button-dark" type="submit">{{ $submitLabel }} <span aria-hidden="true">↗</span></button>
     </div>
 </form>

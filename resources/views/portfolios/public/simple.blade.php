@@ -2,7 +2,7 @@
 
 @section('portfolio-content')
 <div class="public-simple">
-    <header class="simple-topbar"><a href="{{ route('portfolios.public', $portfolio->slug) }}" class="portfolio-wordmark">FOLIOFORM <span> / PERSONAL WORK</span></a><span>AVAILABLE FOR OPPORTUNITIES</span></header>
+    <header class="simple-topbar"><a href="{{ route('portfolios.public', $portfolio->slug) }}" class="portfolio-wordmark">PORTFOLIOFORM <span> / PERSONAL WORK</span></a><span>AVAILABLE FOR OPPORTUNITIES</span></header>
     <main class="simple-wrap">
         <section class="simple-hero">
             <div class="simple-intro">

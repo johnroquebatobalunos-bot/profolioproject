@@ -2,7 +2,7 @@
 
 @section('portfolio-content')
 <div class="public-creative">
-    <header class="creative-topbar"><a href="{{ route('portfolios.public', $portfolio->slug) }}">FOLIOFORM <span> / {{ date('Y') }}</span></a><a href="mailto:{{ $portfolio->email }}" class="creative-mail">SAY HELLO <b>↗</b></a></header>
+    <header class="creative-topbar"><a href="{{ route('portfolios.public', $portfolio->slug) }}">PORTFOLIOFORM <span> / {{ date('Y') }}</span></a><a href="mailto:{{ $portfolio->email }}" class="creative-mail">SAY HELLO <b>↗</b></a></header>
     <main>
         <section class="creative-hero">
             <div class="creative-hero-label"><span>INDEPENDENT<br>BY NATURE</span><span>SCROLL<br>TO WANDER ↓</span></div>

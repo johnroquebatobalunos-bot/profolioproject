@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create a portfolio · Folioform')
+@section('title', 'Create a portfolio · PortfolioForm')
 
 @section('content')
 <div class="page-shell form-page">
@@ -16,7 +16,7 @@
         'method' => 'post',
         'formValues' => [],
         'cancelUrl' => route('home'),
-        'submitLabel' => 'Save and continue',
+        'submitLabel' => 'Create portfolio',
     ])
 </div>
 @endsection
