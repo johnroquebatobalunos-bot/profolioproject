@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Portfolio;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -12,6 +13,8 @@ class PortfolioFlowTest extends TestCase
 
     public function test_portfolio_creation_shows_all_sections_in_one_form(): void
     {
+        $this->actingAs(User::factory()->create());
+
         $this->get(route('portfolios.create'))
             ->assertOk()
             ->assertSee('Start with you')
@@ -23,6 +26,8 @@ class PortfolioFlowTest extends TestCase
 
     public function test_portfolio_can_be_created_edited_previewed_and_deleted(): void
     {
+        $this->actingAs(User::factory()->create());
+
         $createResponse = $this->post(route('portfolios.store'), [
             'name' => 'Morgan Ellis',
             'email' => 'morgan@example.com',

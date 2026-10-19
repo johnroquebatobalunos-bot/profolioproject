@@ -31,6 +31,10 @@ class PortfolioController extends Controller
 
     public function create(): mixed
     {
+        if (! auth()->check()) {
+            session()->put('url.intended', route('portfolios.create'));
+        }
+
         return view('portfolios.create');
     }
 

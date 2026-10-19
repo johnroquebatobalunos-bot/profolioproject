@@ -13,12 +13,24 @@
 <body class="app-body">
     <header class="site-nav">
         <a class="brand" href="{{ route('home') }}" aria-label="PortfolioForm home">
-            <span class="brand-mark">PF</span><span>PortfolioForm</span>
+            <span>PortfolioForm</span>
         </a>
         <nav class="nav-links" aria-label="Main navigation">
             <a href="{{ route('home') }}" @if(request()->routeIs('home')) aria-current="page" @endif>Workspace</a>
+            @auth
+                <span class="nav-user">{{ auth()->user()->name }}</span>
+                <form class="nav-logout" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="nav-link-button" type="submit">Log out</button>
+                </form>
+            @endauth
         </nav>
-        <a class="button button-dark nav-button" href="{{ route('portfolios.create') }}">New portfolio <span aria-hidden="true">+</span></a>
+        <div class="header-actions">
+            @guest
+                <a class="header-login" href="{{ route('login') }}" @if(request()->routeIs('login')) aria-current="page" @endif>Log in</a>
+            @endguest
+            <a class="button button-dark nav-button" href="{{ route('portfolios.create') }}">New portfolio <span aria-hidden="true">+</span></a>
+        </div>
     </header>
 
     <main>
@@ -29,7 +41,7 @@
     </main>
 
     <footer class="site-footer">
-        <a class="brand brand-small" href="{{ route('home') }}"><span class="brand-mark">PF</span><span>PortfolioForm</span></a>
+        <a class="brand brand-small" href="{{ route('home') }}"><span>PortfolioForm</span></a>
         <span>Make room for good work.</span>
         <span class="footer-templates">SIMPLE <i></i> MODERN <i></i> CREATIVE</span>
     </footer>
