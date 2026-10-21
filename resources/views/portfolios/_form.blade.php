@@ -25,8 +25,8 @@
                 </label>
                 <label class="field field-wide">Profile picture
                     @if (!empty($formValues['photo_url']))<span class="current-photo"><img src="{{ $formValues['photo_url'] }}" alt="Current profile picture"> Current picture</span>@endif
-                    <input class="file-input" type="file" name="profile_picture" accept="image/jpeg,image/png,image/webp">
-                    <span class="field-hint">JPG, PNG or WebP · up to 4 MB</span>
+                    <input class="file-input" type="file" name="profile_picture" accept="image/jpeg,image/png,image/bmp,image/gif,image/webp,image/avif,image/heic,image/heif">
+                    <span class="field-hint">Any supported image format · no app-side size limit</span>
                     @error('profile_picture')<small class="field-error">{{ $message }}</small>@enderror
                 </label>
                 <label class="field field-wide">About me

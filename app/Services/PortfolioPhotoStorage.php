@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use GuzzleHttp\Psr7\Utils;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use RuntimeException;
 
 class PortfolioPhotoStorage
 {
@@ -21,10 +23,22 @@ class PortfolioPhotoStorage
 
         if ($baseUrl && $serviceKey && $bucket) {
             $path = 'profiles/'.Str::uuid().'.'.$photo->guessExtension();
-            $response = Http::withToken($serviceKey)
-                ->withHeaders(['Content-Type' => $photo->getMimeType()])
-                ->withBody(file_get_contents($photo->getRealPath()), $photo->getMimeType())
-                ->post("{$baseUrl}/storage/v1/object/{$bucket}/{$path}");
+            $photoPath = $photo->getRealPath();
+
+            if ($photoPath === false || ($photoStream = fopen($photoPath, 'rb')) === false) {
+                throw new RuntimeException('Unable to open the uploaded profile picture.');
+            }
+
+            try {
+                $response = Http::withToken($serviceKey)
+                    ->withHeaders(['Content-Type' => $photo->getMimeType()])
+                    ->withBody(Utils::streamFor($photoStream), $photo->getMimeType())
+                    ->post("{$baseUrl}/storage/v1/object/{$bucket}/{$path}");
+            } finally {
+                if (is_resource($photoStream)) {
+                    fclose($photoStream);
+                }
+            }
 
             $response->throw();
 

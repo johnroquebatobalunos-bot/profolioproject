@@ -14,6 +14,7 @@ RUN composer install --no-dev --no-interaction --prefer-dist --no-progress --no-
 
 FROM php:8.3-cli-alpine AS app
 RUN set -e; apk add --no-cache --virtual .build-deps $PHPIZE_DEPS postgresql-dev oniguruma-dev; docker-php-ext-install mbstring pdo_pgsql; apk add --no-cache libpq; apk del .build-deps
+COPY docker/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 WORKDIR /var/www/html
 COPY . .
 COPY --from=dependencies /app/vendor ./vendor

@@ -163,7 +163,7 @@ class PortfolioController extends Controller
             'projects_text' => ['nullable', 'string', 'max:9000'],
             'experience_text' => ['nullable', 'string', 'max:9000'],
             'links_text' => ['nullable', 'string', 'max:3000'],
-            'profile_picture' => [$creating ? 'nullable' : 'sometimes', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'profile_picture' => [$creating ? 'nullable' : 'sometimes', 'image'],
         ]);
     }
 
